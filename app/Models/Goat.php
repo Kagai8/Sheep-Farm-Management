@@ -21,4 +21,34 @@ class Goat extends Model
         return $this->hasMany(BreedingEvent::class);
     }
     
+    public function goatProfile()
+    {
+        return $this->hasOne(GoatProfile::class);
+    }
+
+    public function Vaccinations()
+    {
+        return $this->hasMany(Vaccination::class);
+    }
+
+    public function HealthRecords()
+    {
+        return $this->hasMany(HealthRecord::class);
+    }
+
+    public function breedingEventsAsRam()
+    {
+        return $this->hasMany(BreedingEvent::class, 'ram_id');
+    }
+
+    // Relationship with breeding events where the goat is the ewe
+    public function breedingEventsAsEwe()
+    {
+        return $this->hasMany(BreedingEvent::class, 'ewe_id');
+    }
+
+    public function costs()
+    {
+        return $this->hasMany(Cost::class);
+    }
 }

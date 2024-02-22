@@ -9,6 +9,8 @@ use App\Http\Controllers\BreedingEventsController;
 use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\HealthRecordsController;
 use App\Http\Controllers\VaccinationsController;
+use App\Http\Controllers\CostsController;
+use App\Http\Controllers\GeneralCostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -104,6 +106,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/sheep/health/record/delete/{id}', [HealthRecordsController::class, 'HealthRecordDelete'])->name('health-record-delete');
     Route::get('/sheep/health/record/done/{id}', [HealthRecordsController::class, 'HealthRecordActive'])->name('health-record-active');
     Route::get('/sheep/health/record/incomplete/{id}', [HealthRecordsController::class, 'HealthRecordInactive'])->name('health-record-inactive');
+
+    // Cost Module
+    Route::get('/sheep/cost/create', [CostsController::class, 'CostCreate'])->name('cost.create');
+    Route::post('/sheep/cost/store', [CostsController::class, 'CostStore'])->name('cost.store');
+    Route::get('/sheep/cost/edit/{id}', [CostsController::class, 'CostEdit'])->name('cost.edit');
+    Route::post('/sheep/cost/update', [CostsController::class, 'CostUpdate'])->name('cost.update');
+    Route::get('/sheep/cost/details/{id}', [CostsController::class, 'CostDetails'])->name('cost.details');
+    Route::get('/sheep/cost/delete/{id}', [CostsController::class, 'CostDelete'])->name('cost.delete');
+    
+
+    // General Cost Module
+    Route::get('/sheep/general/cost/create', [GeneralCostsController::class, 'GeneralCostCreate'])->name('general.create');
+    Route::post('/sheep/general/cost/store', [GeneralCostsController::class, 'GeneralCostStore'])->name('general.store');
+    Route::get('/sheep/general/cost/edit/{id}', [GeneralCostsController::class, 'GeneralCostEdit'])->name('general.edit');
+    Route::post('/sheep/general/cost/update', [GeneralCostsController::class, 'GeneralCostUpdate'])->name('general.update');
+    Route::get('/sheep/general/cost/details/{id}', [GeneralCostsController::class, 'GeneralCostDetails'])->name('general.details');
+    Route::get('/sheep/general/cost/delete/{id}', [GeneralCostsController::class, 'GeneralCostDelete'])->name('general.delete');
+    Route::get('/sheep/general/cost/done/{id}', [GeneralCostsController::class, 'GeneralCostActive'])->name('general.active');
+    Route::get('/sheep/general/cost/incomplete/{id}', [GeneralCostsController::class, 'GeneralCostInactive'])->name('general.inactive');
 
 
 });

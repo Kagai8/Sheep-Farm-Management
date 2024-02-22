@@ -12,36 +12,113 @@
 
 		<div class="box">
 			<div class="box-header with-border">
-			  <h5 class="box-title">Edit Sheep Breed B{{$breed->id}}</h5>
+			  <h5 class="box-title">Edit Cost Record for {{ $cost->goat->name}}, ID: C{{$cost->goat->id  }} </h5>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-  					<form method="post" action="{{ route('breed.update',['id' => $breed->id]) }}" enctype="multipart/form-data" >@csrf
-  						<input type="hidden" name="id" value="{{ $breed->id }}">
+  					<form method="post" action="{{ route('cost.update',['id' => $cost->id]) }}" enctype="multipart/form-data" >
+		 			@csrf
 					 	<div class="row">
-					 		<div class="col-md-6">
-								<div class="form-group">
-									<h5>Breed:  <span class="text-danger">*</span></h5>
-									<div class="controls">
-									<input type="text" name="breed" class="form-control" value="{{$breed->breed}}" required="">
-								     @error('breed') 
-									 <span class="text-danger">{{ $message }}</span>
-									 @enderror
-						 	  		</div>
-			 					</div>	
-			 				</div>
+							<div class="col-12">	
+								<div class="row"> <!-- start 1st row  -->
+
+									<div class="col-md-6">
+	 									
+
+											<div class="form-group">
+												<h5>Goat: <span class="text-danger">*</span></h5>
+												<div class="controls">
+													<select name="goat_id" class="form-control" required="" >
+														@foreach($goats as $goat)
+											                <option value="{{ $goat->id }}" {{ $cost->goat_id == $goat->id ? 'selected' : '' }}>
+											                    {{ $goat->name }}
+											                </option>
+											            @endforeach
+													</select>
+												 @error('goat_id') 
+												 <span class="text-danger">{{ $message }}</span>
+												 @enderror 
+												 </div>
+		 									</div>
+				
+										
+									</div> <!-- end col md 4 -->
+
+									
+			
+								</div> <!-- end 1st row  -->	
+								<div class="row"> <!-- start 1st row  -->
+
+									<div class="col-md-6">
+	 									
+
+										<div class="form-group">
+											<div class="form-group">
+												<h5>Amount:  <span class="text-danger">*</span></h5>
+												<div class="controls">
+												<input type="text" name="amount" class="form-control" required="" value="{{ $cost->amount }}">
+											     @error('amount') 
+												 <span class="text-danger">{{ $message }}</span>
+												 @enderror
+									 	  		</div>
+		 									</div>
+				
+										</div>
+				
+										
+									</div> <!-- end col md 4 -->
+
+									<div class="col-md-6">
+	 									<div class="form-group">
+
+											<div class="form-group">
+												<h5>Reason: <span class="text-danger">*</span></h5>
+												<div class="controls">
+												<input type="text" name="description" class="form-control" required="" value="{{ $cost->description }}">
+											     @error('description') 
+												 <span class="text-danger">{{ $message }}</span>
+												 @enderror
+									 	  		</div>
+		 									</div>
+				
+										</div>
+									</div> 
+			
+								</div> <!-- end 1st row  -->
+								<div class="row"> <!-- start 2nd row  -->
+
+									<div class="col-md-6">
+	 									<div class="form-group">
+
+											<div class="form-group">
+												<h5>Date : <span class="text-danger">*</span></h5>
+												<div class="controls">
+												<input type="date" name="date" class="form-control" required="" value="{{ $cost->date }}">
+											     @error('date') 
+												 <span class="text-danger">{{ $message }}</span>
+												 @enderror
+									 	  		</div>
+		 									</div>
+				
+										</div>
+									</div> 
+								
+			
+								</div> <!-- end 2nd row  -->
+
+								
+								
 						</div>
-					
+				
 
 						<!-- Bank Details -->
-					
 					
 
 						 
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Breed ">
+							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Edit Cost ">
 						</div>
 					</form>
 
@@ -52,11 +129,13 @@
 			</div>
 			<!-- /.box-body -->
 		</div>
-		  <!-- /.box -->
+
+		
 	</section>
-		<!-- /.content -->
 </div>
- 
+
+		<!-- /.content -->
+
  <script type="text/javascript">
       $(document).ready(function() {
         $('select[name="category_id"]').on('change', function(){

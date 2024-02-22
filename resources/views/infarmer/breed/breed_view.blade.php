@@ -35,7 +35,7 @@
 										<tbody>
 										 @foreach($breeds as $item)
 										 <tr>
-											 <td>{{ $item->id }}</td>
+											 <td>B{{ $item->id }}</td>
 											 <td>{{ $item->breed }}</td>
 											 <td>{{ $item->created_by }} </td>
 											 

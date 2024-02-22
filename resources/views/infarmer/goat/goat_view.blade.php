@@ -36,7 +36,7 @@
 														<tbody>
 														 @foreach($ewes as $item)
 														 <tr>
-															 <td>{{ $item->id }}</td>
+															 <td>S{{ $item->id }}</td>
 															 <td>{{ $item->name }}</td>
 															 <td>{{ $item->goat_gender }}</td>
 															 <td>{{ $item->created_by }} </td>
@@ -94,7 +94,7 @@
 														<tbody>
 														 @foreach($rams as $item)
 														 <tr>
-															 <td>{{ $item->id }}</td>
+															 <td>S{{ $item->id }}</td>
 															 <td>{{ $item->name }}</td>
 															 <td>{{ $item->goat_gender }}</td>
 															 <td>{{ $item->created_by }} </td>

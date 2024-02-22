@@ -27,8 +27,6 @@
 											<th>Tag No </th>
 											<th>Name </th>
 											<th>Breed</th>
-											<th>Color </th>
-											<th>Weight </th>
 											<th>Age </th>
 											<th>Date Born </th>
 											<th>Action</th>
@@ -39,11 +37,10 @@
 										 @foreach($ewes as $item)
 										 <tr>
 											<td> <img src="{{ asset($item->goat_image) }}" style="width: 60px; height: 50px;">  </td>
-											<td>{{ $item->goat->id }}</td>
+											<td>S{{ $item->goat->id }}</td>
 											<td>{{ $item->goat->name }}</td>
 											<td>{{ $item->breed->breed }}</td>
-											 <td>{{ $item->goat_color }}</td>
-											 <td>{{ $item->goat_weight }} </td>
+											 
 											 <td>
 											 	@php
                 						// Parse the date of birth into a Carbon instance
@@ -65,7 +62,7 @@
 
 												 <a href="{{ route('goat-profile-edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
 
-												 <a href="" class="btn btn-warning" title="Performance Report"><i class="fa fa-file-code-o"></i> </a>
+												 
 
 												 <a href="{{ route('goat-profile-delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
 												 	<i class="fa fa-trash"></i></a>
@@ -108,10 +105,9 @@
 									<thead>
 										<tr>
 											<th>Image </th>
+											<th>Tag No </th>
 											<th>Name </th>
 											<th>Breed</th>
-											<th>Color </th>
-											<th>Weight </th>
 											<th>Age </th>
 											<th>Date Born </th>
 											<th>Action</th>
@@ -122,10 +118,10 @@
 										 @foreach($rams as $item)
 										 <tr>
 											<td> <img src="{{ asset($item->goat_image) }}" style="width: 60px; height: 50px;">  </td>
+											<td>S{{ $item->goat->id }}</td>
 											<td>{{ $item->goat->name }}</td>
 											<td>{{ $item->breed->breed }}</td>
-											 <td>{{ $item->goat_color }}</td>
-											 <td>{{ $item->goat_weight }} </td>
+											 
 											 <td>
 											 	@php
                 						// Parse the date of birth into a Carbon instance
@@ -137,18 +133,14 @@
 						                $months = $age->format('%m');
 						                $days = $age->format('%d');
 						            	@endphp
-            						{{ $years }} years, {{ $months }} months,  {{ $days }} days
+            						{{ $years }} yr(s), {{ $months }} mth(s),  {{ $days }} d(s)
           						</td>
 											 <td> {{ $item->date_born }}</td>
 
 
 											<td >
 												 <a href="{{ route('goat-profile-details',$item->id) }}" class="btn btn-primary" title="Sheep Details Data"><i class="fa fa-eye"></i> </a>
-
 												 <a href="{{ route('goat-profile-edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-
-												 <a href="" class="btn btn-warning" title="Performance Report"><i class="fa fa-file-code-o"></i> </a>
-
 												 <a href="{{ route('goat-profile-delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
 												 	<i class="fa fa-trash"></i></a>
 											</td>

@@ -12,8 +12,8 @@
 
 		<div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">In Depth Details for Health Record  ID: HR{{ $health_record->id}} </h4>
-			  <small class="subtitle">More description about the health record</small>
+			  <h4 class="box-title">In Depth Details for Cost Record  ID: C{{ $cost->id}} </h4>
+			  <small class="subtitle">More description about the cost</small>
 			</div>
 			  
 			<!-- /.box-header -->
@@ -23,13 +23,13 @@
                         <!-- Add details or content for the left side here -->
                         <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
                             <h6>Goat Name:</h6>
-                            <p>{{ $health_record->goat->name}}</p>
+                            <p>{{ $cost->goat->name}}</p>
                     	</div>
                     </div>
                     <div class="col-md-6">
                     	<div class="details-section" style="padding-left: 15px;">
                             <h6>Tag No:</h6>
-                            <p>{{ $health_record->goat->id}}</p>
+                            <p>{{ $cost->goat->id}}</p>
                     	</div>
                     </div>
                	</div>
@@ -37,14 +37,14 @@
                     <div class="col-md-6">
                         <!-- Add details or content for the left side here -->
                         <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
-                            <h6>Type of Treatment :</h6>
-                            <p>{{ $health_record->type_treatment}}</p>
+                            <h6>Amount :</h6>
+                            <p>KES {{ $cost->amount}}</p>
                     	</div>
                     </div>
                     <div class="col-md-6">
                     	<div class="details-section" style="padding-left: 15px;">
-                            <h6>Symptoms :</h6>
-                            <p>{{ $health_record->symptoms}}</p>
+                            <h6>Reason :</h6>
+                            <p>{{ $cost->description}}</p>
                     	</div>
                     </div>
                	</div>
@@ -52,30 +52,11 @@
                     <div class="col-md-6">
                         <!-- Add details or content for the left side here -->
                         <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
-                            <h6>Diagnosis:</h6>
-                            <p>{{ $health_record->diagnosis}}</p>
-                    	</div>
-                    </div>
-                    <div class="col-md-6">
-                    	<div class="details-section" style="padding-left: 15px;">
                             <h6>Date:</h6>
-                            <p>{{ $health_record->date}} </p>
+                            <p>{{ $cost->date}}</p>
                     	</div>
                     </div>
                	</div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Add details or content for the left side here -->
-                        <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
-                            <h6> Status:</h6>
-                            @if($health_record->follow_up)
-                            <p>{{ $health_record->follow_up}} </p>
-                            @else
-                            <p>No Information Yet </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
                	
                	
                	<div class="row">
@@ -83,13 +64,13 @@
                         <!-- Add details or content for the left side here -->
                         <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
                             <h6>Created At:</h6>
-                            <p>{{ \Carbon\Carbon::parse($health_record->created_at )->format('d F Y')}}  {{ \Carbon\Carbon::parse($health_record->updated_at )->format('H') }} hr {{ \Carbon\Carbon::parse($health_record->updated_at )->format('m')}} mins</p>
+                            <p>{{ \Carbon\Carbon::parse($cost->created_at )->format('d F Y')}}  {{ \Carbon\Carbon::parse($cost->updated_at )->format('H') }} hr {{ \Carbon\Carbon::parse($cost->updated_at )->format('m')}} mins</p>
                     	</div>
                     </div>
                     <div class="col-md-6">
                     	<div class="details-section" style="padding-left: 15px;">
                             <h6>Updated At:</h6>
-                            <p>{{ \Carbon\Carbon::parse($health_record->updated_at )->format('d F Y')}}   {{ \Carbon\Carbon::parse($health_record->updated_at )->format('H') }} hr {{ \Carbon\Carbon::parse($health_record->updated_at )->format('m')}} mins</p>
+                            <p>{{ \Carbon\Carbon::parse($cost->updated_at )->format('d F Y')}}   {{ \Carbon\Carbon::parse($cost->updated_at )->format('H') }} hr {{ \Carbon\Carbon::parse($cost->updated_at )->format('m')}} mins</p>
                     	</div>
                     </div>
                	</div>
@@ -97,15 +78,15 @@
                     <div class="col-md-6">
                         <!-- Add details or content for the left side here -->
                         <div class="details-section" style="border-right: 1px solid #e3e3e3; padding-right: 15px;">
-                            <h6>Breeding Event Created By:</h6>
-                            <p>{{ $health_record->created_by}}</p>
+                            <h6>Cost Created By:</h6>
+                            <p>{{ $cost->created_by}}</p>
                     	</div>
                     </div>
                     <div class="col-md-6">
                         <div class="details-section" style="padding-left: 15px;">
                             <h6>Updated By:</h6>
-                            @if($health_record->updated_by)
-                            <p>{{ $health_record->updated_by}}</p>
+                            @if($cost->updated_by)
+                            <p>{{ $cost->updated_by}}</p>
                             @else
                             <p>N/A</p>
                             @endif
@@ -114,16 +95,7 @@
                     
                	</div>
                 <br><br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Add details or content for the left side here -->
-                        <div class="details-section" >
-                            <h6>Notes:</h6>
-                            <p>{{ $health_record->notes}}</p>
-                        </div>
-                    </div>
-                    
-                </div>
+                
 			</div>
 			<!-- /.box-body -->
 		</div>

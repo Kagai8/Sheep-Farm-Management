@@ -12,7 +12,7 @@
 
 		<div class="box">
 			<div class="box-header with-border">
-			  <h5 class="box-title">Edit Sheep Profile for {{ $goat_profile->goat->name}}, ID: {{$goat_profile->goat->id  }} </h5>
+			  <h5 class="box-title">Edit Sheep Profile for {{ $goat_profile->goat->name}}, ID: S{{$goat_profile->goat->id  }} </h5>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -210,6 +210,42 @@
 													    <option value="3" {{ $goat_profile->status == 3 ? 'selected' : '' }}>Deceased</option>
 													</select>
 												 @error('status') 
+												 <span class="text-danger">{{ $message }}</span>
+												 @enderror 
+												 </div>
+		 									</div>
+		 								</div>
+									
+
+									
+			
+								</div> <!-- end 3rd row  -->
+								<div class="row"> <!-- start 3rd row  -->
+									<div class="col-md-6">
+										<div class="form-group">
+											<h5>Breeding Status: <span class="text-danger">*</span></h5>
+											<div class="controls">
+												<select name="breeding_status" class="form-control" required="">
+												    <option value="1" {{ $goat_profile->breeding_status == 0 ? 'selected' : '' }}>Not Breeding</option>
+												    <option value="2" {{ $goat_profile->breeding_status == 1 ? 'selected' : '' }}>Currently Breeding</option>
+												    
+												</select>
+											 @error('breeding_status') 
+											 <span class="text-danger">{{ $message }}</span>
+											 @enderror 
+											 </div>
+	 									</div>
+									</div> 
+										<div class="col-md-6">
+											<div class="form-group">
+												<h5>Sale Status: <span class="text-danger">*</span></h5>
+												<div class="controls">
+													<select name="sale_status" class="form-control" required="">
+														<option value="1" {{ $goat_profile->sale_sale_status == 0 ? 'selected' : '' }}>Not For Sale</option>
+													    <option value="2" {{ $goat_profile->sale_status == 1 ? 'selected' : '' }}>Available for Sale</option>
+													    
+													</select>
+												 @error('sale_status') 
 												 <span class="text-danger">{{ $message }}</span>
 												 @enderror 
 												 </div>

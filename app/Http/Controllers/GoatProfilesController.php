@@ -17,7 +17,7 @@ class GoatProfilesController extends Controller
     public function GoatProfileCreate(){
         
         $breeds = Breed::latest()->get();
-        $goats = Goat::latest()->get();
+        $goats = Goat::whereDoesntHave('goatProfile')->latest()->get();
         $ewes = Goat::where('goat_gender','Ewe')->latest()->get();
         $rams = Goat::where('goat_gender','Ram')->latest()->get();
 
@@ -113,6 +113,8 @@ class GoatProfilesController extends Controller
             'goat_maturity' => $request->goat_maturity,
             'health_status' => $request->health_status,
             'status' => $request->status,
+            'sale_status' => $request->sale_status,
+            'breeding_status' => $request->breeding_status,
 
             'updated_at' => Carbon::now(),   
 
@@ -191,7 +193,10 @@ class GoatProfilesController extends Controller
         // Load the ewe parent record
         $ewe_parent = Goat::find($goat_profile->ewe_id);
 
-        return view('infarmer.goat_profile.goat_profile_details',compact('goat_profile','ram_parent','ewe_parent'));
+        // Load all associated data for the goat
+        $goat = Goat::with('breed','costs', 'breedingEventsAsRam', 'breedingEventsAsEwe','Vaccinations', 'HealthRecords')->findOrFail($goat_profile->goat_id);
+
+        return view('infarmer.goat_profile.goat_profile_details',compact('goat_profile','ram_parent','ewe_parent','goat'));
 
     }
 

@@ -12,7 +12,7 @@
 
 		<div class="box">
 			<div class="box-header with-border">
-			  <h5 class="box-title">Edit Sheep  </h5>
+			  <h5 class="box-title">Edit Sheep S{{$goat->id}}  </h5>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">

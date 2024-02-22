@@ -112,13 +112,14 @@
         </li>
         <li class="treeview ">
           <a href="#">
-            <i data-feather="mail"></i> <span>Commission Hub </span>
+            <i data-feather="mail"></i> <span>Cost Hub </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-              <li class=""><a href=""><i class="ti-more"></i>Commission Check</a></li>
+              <li class=""><a href="{{ route('cost.create') }}"><i class="ti-more"></i>Cost Per Goat</a></li>
+              <li class=""><a href="{{ route('general.create') }}"><i class="ti-more"></i>General Costs</a></li>
               
           </ul>
         </li>

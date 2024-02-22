@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Goat;
 use App\Models\HealthRecord;
-
 use App\Models\Breed;
 use Carbon\Carbon;
 use Intervention\Image\ImageManager;
@@ -30,9 +29,9 @@ class HealthRecordsController extends Controller
 
     public function HealthRecordStore(Request $request){    
 
-            $breeding_event_id = HealthRecord::insertGetId([
+            $health_record_id = HealthRecord::insertGetId([
             'goat_id' => $request->goat_id,
-            'type_of_treatment' => $request->type_of_treatment,
+            'type_treatment' => $request->type_treatment,
             'symptoms' => $request->symptoms,
             'diagnosis' => $request->diagnosis,
             'date' => $request->date,
@@ -50,78 +49,46 @@ class HealthRecordsController extends Controller
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('breeding-events')->with($notification);
+            return redirect()->route('health-record-create')->with($notification);
 
     
 }
 
     public function HealthRecordEdit($id){
 
-        $ewes = Goat::where('goat_gender','Ewe')->latest()->get();
-        $rams = Goat::where('goat_gender','Ram')->latest()->get();
+        $health_record = HealthRecord::with('goat')->findOrFail($id);
+        $goats = Goat::latest()->get();
 
-        $breeding_event = HealthRecord::with('goat', 'ram', 'ewe')->findOrFail($id);
-
-
-        return view('infarmer.breeding.breeding_edit',compact('ewes','rams','breeding_event'));
+        return view('infarmer.health.health_edit',compact('health_record', 'goats'));
 
     }
 
     public function HealthRecordUpdate(Request $request){    
 
-        $breeding_event_id = $request->id;
+        $health_record_id = $request->id;
 
-        HealthRecord::findOrFail($breeding_event_id)->update([
+        HealthRecord::findOrFail($health_record_id)->update([
 
-            'ram_id' => $request->ram_id,
-            'ewe_id' => $request->ewe_id,
-            'breeding_date' => $request->breeding_date,
-            'expected_pregnancy_date' => $request->expected_pregnancy_date,
-            'expected_birth_date' => $request->expected_birth_date,
+            'goat_id' => $request->goat_id,
+            'type_treatment' => $request->type_treatment,
+            'symptoms' => $request->symptoms,
+            'diagnosis' => $request->diagnosis,
+            'date' => $request->date,
             'notes' => $request->notes,
-            
-            'actual_pregnancy_date' => $request->actual_pregnancy_date,
-            'actual_birth_date' => $request->actual_birth_date,
-            'no_of_kids' => $request->no_of_kids,
+            'follow_up' => $request->follow_up,
+            'updated_by' => auth()->user()->name,
 
             'updated_at' => Carbon::now(),   
 
             ]);
         $notification = array(
-            'message' => 'Breeding Event Updated Successfully',
+            'message' => 'Health Record Updated Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('breeding-events')->with($notification);
+        return redirect()->route('health-record-create')->with($notification);
 
     }
-
-    public function HealthRecordInActive($id){
-
-        HealthRecord::findOrFail($id)->update(['status' => 0]);
-        $notification = array(
-            'message' => 'Breeding Done',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-     }
-
-
-    public function HealthRecordActive($id){
-        HealthRecord::findOrFail($id)->update(['status' => 1]);
-        $notification = array(
-            'message' => 'Breeding Not Done',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
-        
-     }
-
-    
-
-    
 
      public function HealthRecordDelete($id){
 
@@ -130,7 +97,7 @@ class HealthRecordsController extends Controller
         
 
         $notification = array(
-            'message' => 'Breeding Record Deleted Successfully',
+            'message' => 'Health Record Deleted Successfully',
             'alert-type' => 'success'
         );
 
@@ -140,15 +107,9 @@ class HealthRecordsController extends Controller
 
      public function HealthRecordDetails($id){
 
-        $breeding_event = HealthRecord::with('goat', 'ram', 'ewe')->findOrFail($id);
+        $health_record = HealthRecord::with('goat')->findOrFail($id);
 
-        // Load the ram parent record
-        $ram_parent = Goat::find($breeding_event->ram_id);
-
-        // Load the ewe parent record
-        $ewe_parent = Goat::find($breeding_event->ewe_id);
-
-        return view('infarmer.breeding.breeding_details',compact('breeding_event','ram_parent','ewe_parent'));
+        return view('infarmer.health.health_details',compact('health_record'));
 
     }
 }

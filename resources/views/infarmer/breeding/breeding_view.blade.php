@@ -23,6 +23,7 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
+											<th>ID</th>
 											<th>Ram </th>
 											<th>Ewe </th>
 											<th>Breeding Date </th>
@@ -35,6 +36,7 @@
 										<tbody>
 										 @foreach($breeding_events as $item)
 										 <tr>
+										 	<td>BE{{ $item->id }}  </td>
 											<td>Tag No: {{ $item->ram->id }},{{ $item->ram->name }} </td>
 											<td>Tag No: {{ $item->ewe->id }}, {{ $item->ewe->name }}</td>
 											<td>{{ $item->breeding_date }}</td>

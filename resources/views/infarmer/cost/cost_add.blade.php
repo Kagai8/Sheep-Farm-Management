@@ -16,11 +16,11 @@
 			   
 		 
 
-			<div class="col-7">
+			<div class="col-8">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Health Record list <span class="badge badge-pill badge-danger"> {{ count($health_records) }} </span></h3>
+				  <h3 class="box-title">Cost Per Goat List <span class="badge badge-pill badge-danger"> {{ count($costs) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -28,27 +28,27 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>HR ID </th>
+								<th>Cost ID </th>
 								<th>Goat Name </th>
 								<th>Tag No </th>
-								<th>Date </th>
+								<th>Amount </th>
 								<th>Action</th>
 								 
 							</tr>
 						</thead>
 						<tbody>
-							 @foreach($health_records as $item)
+							 @foreach($costs as $item)
 							 <tr>
 							 	<td> {{ $item->id }}  </td>
 								<td> {{ $item->goat->name }}  </td>
 								<td>{{ $item->goat->id }}</td>
 								 <td width="20%">{{ $item->date }}</td>
 								<td >
-									 <a href="{{ route('health-record-edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+									 <a href="{{ route('cost.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
 
-									 <a href="{{ route('health-record-delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
+									 <a href="{{ route('cost.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
 									 	<i class="fa fa-trash"></i></a>
-									 <a href="{{ route('health-record-details',$item->id) }}" class="btn btn-primary" title="Vaccination Schedule Details Data"><i class="fa fa-eye"></i> </a>
+									 <a href="{{ route('cost.details',$item->id) }}" class="btn btn-primary" title="Vaccination Schedule Details Data"><i class="fa fa-eye"></i> </a>
 									 
 								</td>
 													 
@@ -71,18 +71,18 @@
 <!--   ------------ Add Category Page -------- -->
 
 
-          <div class="col-5">
+          <div class="col-4">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Create Health Record </h3>
+				  <h3 class="box-title">Create Cost </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
 
 
-				 <form method="post" action="{{ route('health-record-store') }}" >
+				 <form method="post" action="{{ route('cost.store') }}" >
 					 	@csrf
 									   
 					<div class="form-group">
@@ -101,45 +101,22 @@
 						 </div>
 
 
-					 <div class="form-group">
-							<h5>Type Of Treatment <span class="text-danger">*</span></h5>
-							<div class="controls">
-								<select name="type_treatment" class="form-control"  >
-									<option value="" selected="" disabled="">Select Type</option>
-									
-									<option value="Deworming">Deworming</option>
-							        <option value="Hoof Trimming">Hoof Trimming</option>
-							        <option value="Antibiotics">Antibiotics</option>
-							        <option value="Nutritional Supplements">Nutritional Supplements</option>
-							        <option value="Anti-inflammatory">Anti-inflammatory</option>
-							        <option value="Parasite Control">Parasite Control Products</option>
-							        <option value="Fluid Therapy">Fluid Therapy</option>
-							        <option value="Dental Care">Dental Care</option>
-							        <option value="Fertility Treatments">Fertility Treatments</option>	
-									
-								</select>
-							@error('type_treatment') 
-							 <span class="text-danger">{{ $message }}</span>
-							 @enderror 
-							 </div>
-						 </div>
-
-
-						  <div class="form-group">
-								<h5>Symptoms  <span class="text-danger">*</span></h5>
+						 <div class="form-group">
+								<h5>Amount:  <span class="text-danger">*</span></h5>
 								<div class="controls">
-									 <input type="text"  name="symptoms" class="form-control" > 
-									 @error('symptoms') 
+									 <input type="text"  name="amount" class="form-control" > 
+									 @error('amount') 
 									 <span class="text-danger">{{ $message }}</span>
 									 @enderror 
 								</div>
 						</div>
 
-						<div class="form-group">
-								<h5>Diagnosis  <span class="text-danger">*</span></h5>
+
+						  <div class="form-group">
+								<h5>Cost Reason  <span class="text-danger">*</span></h5>
 								<div class="controls">
-									 <input type="text"  name="diagnosis" class="form-control" > 
-									 @error('diagnosis') 
+									 <input type="text"  name="description" class="form-control" > 
+									 @error('description') 
 									 <span class="text-danger">{{ $message }}</span>
 									 @enderror 
 								</div>
@@ -155,22 +132,10 @@
 										 @enderror 
 									</div>
 								</div>
-
-
-
-					<div class="form-group">
-									<h5>Notes  <span class="text-danger">*</span></h5>
-									<div class="controls">
-										 <input type="text"  name="notes" class="form-control" > 
-										 @error('notes') 
-										 <span class="text-danger">{{ $message }}</span>
-										 @enderror 
-									</div>
-								</div>
 									 
 
 							 <div class="text-xs-right">
-					<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Record">					 
+					<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Cost">					 
 										</div>
 				</form>
 
