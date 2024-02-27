@@ -11,6 +11,8 @@ use App\Http\Controllers\HealthRecordsController;
 use App\Http\Controllers\VaccinationsController;
 use App\Http\Controllers\CostsController;
 use App\Http\Controllers\GeneralCostsController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +26,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/w', function () {
     return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -123,9 +129,28 @@ Route::middleware('auth')->group(function () {
     Route::post('/sheep/general/cost/update', [GeneralCostsController::class, 'GeneralCostUpdate'])->name('general.update');
     Route::get('/sheep/general/cost/details/{id}', [GeneralCostsController::class, 'GeneralCostDetails'])->name('general.details');
     Route::get('/sheep/general/cost/delete/{id}', [GeneralCostsController::class, 'GeneralCostDelete'])->name('general.delete');
-    Route::get('/sheep/general/cost/done/{id}', [GeneralCostsController::class, 'GeneralCostActive'])->name('general.active');
-    Route::get('/sheep/general/cost/incomplete/{id}', [GeneralCostsController::class, 'GeneralCostInactive'])->name('general.inactive');
+    
+    // Cost Module
+    Route::get('/sheep/sales/create', [SalesController::class, 'SaleCreate'])->name('sale.create');
+    Route::post('/sheep/sales/store', [SalesController::class, 'SaleStore'])->name('sale.store');
+    Route::get('/sheep/sales/edit/{id}', [SalesController::class, 'SaleEdit'])->name('sale.edit');
+    Route::post('/sheep/sales/update', [SalesController::class, 'SaleUpdate'])->name('sale.update');
+    Route::get('/sheep/sales/details/{id}', [SalesController::class, 'SaleDetails'])->name('sale.details');
+    Route::get('/sheep/sales/delete/{id}', [SalesController::class, 'SaleDelete'])->name('sale.delete');
+    Route::get('/sheep/view/sales/', [SalesController::class, 'SalesView'])->name('sale.view');
+    Route::get('sheep/sales/generate/receipt/{id}', [SalesController::class, 'SaleGenerateReceipt'])->name('sale.receipt');
 
+    //User Management
+    Route::get('/admin/create/user', [UserController::class, 'CreateUser'])->name('create-user');
+    Route::post('/admin/store/user', [UserController::class, 'StoreUser'])->name('store-user');
+    Route::get('/admin/view/user', [UserController::class, 'ViewUser'])->name('view-user');
+    Route::get('/admin/user/edit/{id}', [UserController::class, 'EditUser'])->name('edit-user');
+    Route::post('/admin/user/update/{id}', [UserController::class, 'UpdateUser'])->name('update-user');
+    Route::get('/admin/user/delete/{id}', [UserController::class, 'DeleteUser'])->name('delete-user');
+
+    //Change Password
+    Route::get('/change/user/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
+    Route::post('/update/user/password', [UserController::class, 'UserUpdatePassword'])->name('update-user-password');
 
 });
 

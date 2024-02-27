@@ -208,6 +208,7 @@
 														<option value="1" {{ $goat_profile->status == 1 ? 'selected' : '' }}>Alive</option>
 													    <option value="2" {{ $goat_profile->status == 2 ? 'selected' : '' }}>Coma</option>
 													    <option value="3" {{ $goat_profile->status == 3 ? 'selected' : '' }}>Deceased</option>
+													    <option value="4" {{ $goat_profile->status == 4 ? 'selected' : '' }}>Sold</option>
 													</select>
 												 @error('status') 
 												 <span class="text-danger">{{ $message }}</span>
@@ -241,8 +242,8 @@
 												<h5>Sale Status: <span class="text-danger">*</span></h5>
 												<div class="controls">
 													<select name="sale_status" class="form-control" required="">
-														<option value="1" {{ $goat_profile->sale_sale_status == 0 ? 'selected' : '' }}>Not For Sale</option>
-													    <option value="2" {{ $goat_profile->sale_status == 1 ? 'selected' : '' }}>Available for Sale</option>
+														<option value="0" {{ $goat_profile->sale_sale_status == 0 ? 'selected' : '' }}>Not For Sale</option>
+													    <option value="1" {{ $goat_profile->sale_status == 1 ? 'selected' : '' }}>Available for Sale</option>
 													    
 													</select>
 												 @error('sale_status') 

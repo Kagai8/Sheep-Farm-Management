@@ -150,8 +150,10 @@
                                 <p><span class="badge badge-pill badge-success">Alive</span></p>
                                 @elseif($goat_profile->status == 2)
                                 <p><span class="badge badge-pill badge-light">Coma</span></p>
-                                @else
+                                @elseif($goat_profile->status == 3)
                                 <p><span class="badge badge-pill badge-danger">Deceased</span></p>
+                                @else
+                                <p><span class="badge badge-pill badge-warning">Sold</span></p>
                                 @endif
                         	</div>
                         </div>
@@ -172,7 +174,7 @@
                         <div class="col-md-6">
                             <!-- Add details or content for the left side here -->
                             <div class="details-section" style="padding-left: 15px;">
-                                <h6>Breeding Status:</h6>
+                                <h6>Sale  Status:</h6>
                                 @if($goat_profile->sale_status == 0)
                                 <p><span class="badge badge-pill badge-info">Not For Sale</span></p>
                                 @else

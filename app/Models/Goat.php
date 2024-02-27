@@ -51,4 +51,9 @@ class Goat extends Model
     {
         return $this->hasMany(Cost::class);
     }
+
+    public function sale()
+    {
+        return $this->hasOne(Sale::class);
+    }
 }

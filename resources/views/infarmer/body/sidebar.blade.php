@@ -123,6 +123,34 @@
               
           </ul>
         </li>
+
+        <li class="treeview ">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Sale Hub </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li class=""><a href="{{ route('sale.create') }}"><i class="ti-more"></i>Point Of Sale</a></li>
+              <li class=""><a href="{{ route('sale.view') }}"><i class="ti-more"></i>View Sales</a></li>
+              
+          </ul>
+        </li>
+
+        <li class="treeview ">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Users </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li class=""><a href="{{ route('create-user') }}"><i class="ti-more"></i>View Users</a></li>
+              
+              
+          </ul>
+        </li>
  
 
        

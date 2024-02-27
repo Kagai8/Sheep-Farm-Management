@@ -57,7 +57,7 @@
 				
 			   <li class="user-body">
 			   	<a class="dropdown-item" ><i class="ti-user text-muted mr-2"></i> {{auth()->user()->name}}</a>
-			   	<a class="dropdown-item" href=""><i class="ti-lock"></i> Change Password</a>
+			   	<a class="dropdown-item" href="{{ route('user.change.password') }}"><i class="ti-lock"></i> Change Password</a>
 					  <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
