@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Sales View</title>
+@endsection
 @section('admin')
 
 

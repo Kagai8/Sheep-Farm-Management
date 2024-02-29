@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Disease Create and View</title>
+@endsection
 @section('admin')
 
   <!-- Content Wrapper. Contains page content -->

@@ -9,6 +9,8 @@ use App\Models\Breed;
 use Carbon\Carbon;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Exports\GoatsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GoatsController extends Controller
 {
@@ -79,24 +81,42 @@ class GoatsController extends Controller
     }
 
 
-     public function GoatDelete($id){
-        $goat = Goat::findOrFail($id);
-    
-        Goat::findOrFail($id)->delete();
+    public function GoatDelete($id){
 
-        
+        try {
+            $goat = Goat::findOrFail($id);
 
-        $notification = array(
-            'message' => 'Sheep  Deleted Successfully',
-            'alert-type' => 'success'
-        );
+            // Delete the associated GoatProfile
+            $goatProfile = $goat->goatProfile;
+            if ($goatProfile) {
+                $goatProfile->delete();
+            }
 
-        return redirect()->back()->with($notification);
+            // Delete the Goat
+            $goat->delete();
 
-     }// end method 
+            $notification = [
+                'message' => 'Sheep Deleted Successfully Plus Profile',
+                'alert-type' => 'success'
+            ];
+
+            return redirect()->back()->with($notification);
+        } catch (\Exception $e) {
+            $notification = [
+                'message' => 'Failed to delete Sheep',
+                'alert-type' => 'error'
+            ];
+
+            return redirect()->back()->with($notification);
+        }
+    }
 
 
-     
+    public function export() 
+    {
+        $filename = "users.xlsx";
+        return Excel::download(new GoatsExport, $filename);
+    }
     
 
 }

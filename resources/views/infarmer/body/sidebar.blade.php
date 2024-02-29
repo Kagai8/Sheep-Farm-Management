@@ -18,7 +18,7 @@
         </div>
       
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">  
+      <ul class="sidebar-menu" data-widget="tree" >  
 		  
       		<li class="">
                 <a href="{{ route('dashboard.index')}}">
@@ -27,6 +27,7 @@
                 </a>
             </li>
 
+          <li class="header nav-small-cap">SHEEP </li>
           <li class="treeview ">
             <a href="#">
               <i data-feather="mail"></i> <span>Breed Administration</span>
@@ -68,8 +69,7 @@
               
             </ul>
           </li> 
-     
-
+        <li class="header nav-small-cap">BREEDING</li>
         <li class="treeview ">
           <a href="#">
             <i data-feather="mail"></i> <span>Breeding Hub </span>
@@ -83,6 +83,7 @@
           </ul>
         </li>
 
+        <li class="header nav-small-cap">VACCINE AND HEALTH</li>
         <li class="treeview ">
           <a href="#">
             <i data-feather="mail"></i> <span>Vaccine Schedules </span>
@@ -106,10 +107,11 @@
           </a>
           <ul class="treeview-menu">
               <li class=""><a href="{{ route('health-record-create') }}"><i class="ti-more"></i>Health Record Create</a></li>
-              <li class=""><a href=""><i class="ti-more"></i>Payment Plans Overview</a></li>
+              
               
           </ul>
         </li>
+        <li class="header nav-small-cap">ACCOUNTING</li>
         <li class="treeview ">
           <a href="#">
             <i data-feather="mail"></i> <span>Cost Hub </span>
@@ -147,6 +149,21 @@
           </a>
           <ul class="treeview-menu">
               <li class=""><a href="{{ route('create-user') }}"><i class="ti-more"></i>View Users</a></li>
+              
+              
+          </ul>
+        </li>
+        <li class="header nav-small-cap">REPORTS</li>
+        <li class="treeview ">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Sheep </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li class=""><a href="{{ route('goat-full-report') }}"><i class="ti-more"></i>Sheep Full Report</a></li>
+              
               
               
           </ul>

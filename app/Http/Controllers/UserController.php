@@ -186,4 +186,9 @@ class UserController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
 }

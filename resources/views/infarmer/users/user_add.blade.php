@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>User Add and Users List</title>
+@endsection
 @section('admin')
 
 

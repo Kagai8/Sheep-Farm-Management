@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Sheep Profiles</title>
+@endsection
 @section('admin')
 
 

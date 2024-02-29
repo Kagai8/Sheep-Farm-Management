@@ -19,4 +19,14 @@ class GoatProfile extends Model
     {
         return $this->belongsTo(Goat::class);
     }
+
+    public function ewe()
+    {
+        return $this->belongsTo(Goat::class,'ewe_id');
+    }
+
+    public function ram()
+    {
+        return $this->belongsTo(Goat::class,'ram_id');
+    }
 }

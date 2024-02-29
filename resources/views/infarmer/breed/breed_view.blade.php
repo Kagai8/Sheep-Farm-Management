@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Breeds List</title>
+@endsection
 @section('admin')
 
 

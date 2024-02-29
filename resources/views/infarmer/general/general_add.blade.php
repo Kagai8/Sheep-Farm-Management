@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>General Cost Create & View</title>
+@endsection
 @section('admin')
 
 

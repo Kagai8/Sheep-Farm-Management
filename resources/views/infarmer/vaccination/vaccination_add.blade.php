@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Vaccination Schedule Create</title>
+@endsection
 @section('admin')
 
 

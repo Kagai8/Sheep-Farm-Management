@@ -13,6 +13,7 @@ use App\Http\Controllers\CostsController;
 use App\Http\Controllers\GeneralCostsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sheep/edit/name/{id}', [GoatsController::class, 'GoatEdit'])->name('goat.edit');
     Route::post('/sheep/name/update', [GoatsController::class, 'GoatUpdate'])->name('goat.update');
     Route::get('/sheep/name/delete/{id}', [GoatsController::class, 'GoatDelete'])->name('goat.delete');
+    Route::get('/sheep/export/excel', [GoatsController::class, 'export'])->name('goat.report');
 
     //Goat Profile
     Route::get('/sheep/view/sheep/profiles', [GoatProfilesController::class, 'GoatProfilesView'])->name('goat-profiles');
@@ -148,9 +150,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/user/update/{id}', [UserController::class, 'UpdateUser'])->name('update-user');
     Route::get('/admin/user/delete/{id}', [UserController::class, 'DeleteUser'])->name('delete-user');
 
+
     //Change Password
     Route::get('/change/user/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/update/user/password', [UserController::class, 'UserUpdatePassword'])->name('update-user-password');
+
+    //Reports
+    Route::get('/report/sheep/full/report', [ReportController::class, 'GoatFullReport'])->name('goat-full-report');
+    Route::get('/export/sheep/full/report', [ReportController::class, 'ExportGoatFullReport'])->name('export-goat-profiles');
+    Route::get('/report/sheep/ram/report', [ReportController::class, 'GoatRamReport'])->name('goat-ram-report');
+    Route::get('/report/sheep/ewe/report', [ReportController::class, 'GoatEweReport'])->name('goat-ewe-report');
 
 });
 

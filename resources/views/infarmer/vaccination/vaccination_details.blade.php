@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Vaccination Schedule Edit for ID: V{{ $vaccination->id}}</title>
+@endsection
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -12,7 +15,7 @@
 
 		<div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">In Depth Details for Vaccination Schedule ID: {{ $vaccination->id}} </h4>
+			  <h4 class="box-title">In Depth Details for Vaccination Schedule ID: V{{ $vaccination->id}} </h4>
 			  <small class="subtitle">More description about the general breeding event</small>
 			</div>
 			  

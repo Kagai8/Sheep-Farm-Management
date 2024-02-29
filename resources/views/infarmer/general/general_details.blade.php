@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>General Cost Details for GC{{ $general_cost->id}}</title>
+@endsection
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

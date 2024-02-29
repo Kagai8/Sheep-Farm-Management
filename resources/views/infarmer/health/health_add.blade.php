@@ -1,4 +1,7 @@
 @extends('infarmer.admin_master')
+@section('title')
+<title>Health Record Create and View</title>
+@endsection
 @section('admin')
 
 
