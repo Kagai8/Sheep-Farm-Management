@@ -65,6 +65,7 @@
             <ul class="treeview-menu">
               <li class=""><a href="{{ route('goat-profile-create') }}"><i class="ti-more"></i>Create Sheep Profile</a></li>
               <li class=""><a href="{{ route('goat-profiles') }}"><i class="ti-more"></i>View Sheep Profiles</a></li>
+              
              
               
             </ul>
@@ -156,14 +157,16 @@
         <li class="header nav-small-cap">REPORTS</li>
         <li class="treeview ">
           <a href="#">
-            <i data-feather="mail"></i> <span>Sheep </span>
+            <i data-feather="mail"></i> <span>Reports </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
               <li class=""><a href="{{ route('goat-full-report') }}"><i class="ti-more"></i>Sheep Full Report</a></li>
-              
+              <li class=""><a href="{{ route('general-report') }}"><i class="ti-more"></i>General Cost Report</a></li>
+              <li class=""><a href="{{ route('cost-report') }}"><i class="ti-more"></i>Cost Per Goat Report</a></li>
+              <li class=""><a href="{{ route('sale-report') }}"><i class="ti-more"></i>Sales Report</a></li>
               
               
           </ul>

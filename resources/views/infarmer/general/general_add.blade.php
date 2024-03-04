@@ -57,7 +57,7 @@
 
 									 <a href="{{ route('general.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
 									 	<i class="fa fa-trash"></i></a>
-									 <a href="{{ route('general.details',$item->id) }}" class="btn btn-primary" title="Vaccination Schedule Details Data"><i class="fa fa-eye"></i> </a>
+									 <a href="{{ route('general.details',$item->id) }}" class="btn btn-primary" title="View Details"><i class="fa fa-eye"></i> </a>
 									 
 								</td>
 													 

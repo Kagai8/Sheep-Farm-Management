@@ -74,6 +74,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/sheep/profile/image/update', [GoatProfilesController::class, 'GoatProfileImageUpdate'])->name('goat-profile-image-update');
     Route::get('/sheep/profile/delete/{id}', [GoatProfilesController::class, 'GoatProfileDelete'])->name('goat-profile-delete');
     Route::get('/sheep/profile/details/{id}', [GoatProfilesController::class, 'GoatProfileDetails'])->name('goat-profile-details');
+    Route::get('/sheep/profile/search', [GoatProfilesController::class, 'GoatProfileSearch'])->name('goat-profile-search');
+    Route::post('/sheep/profile/results', [GoatProfilesController::class, 'GoatProfileSearchResults'])->name('search-results');
+
 
     // Breeding Module
     Route::get('/sheep/view/breeding/events', [BreedingEventsController::class, 'BreedingEventView'])->name('breeding-events');
@@ -158,8 +161,12 @@ Route::middleware('auth')->group(function () {
     //Reports
     Route::get('/report/sheep/full/report', [ReportController::class, 'GoatFullReport'])->name('goat-full-report');
     Route::get('/export/sheep/full/report', [ReportController::class, 'ExportGoatFullReport'])->name('export-goat-profiles');
-    Route::get('/report/sheep/ram/report', [ReportController::class, 'GoatRamReport'])->name('goat-ram-report');
-    Route::get('/report/sheep/ewe/report', [ReportController::class, 'GoatEweReport'])->name('goat-ewe-report');
+    Route::get('/report/general/cost/report', [ReportController::class, 'GeneralCostReport'])->name('general-report');
+    Route::get('/export/general/cost/report', [ReportController::class, 'ExportGeneralCostReport'])->name('export-general');
+    Route::get('/report/cost/report', [ReportController::class, 'CostReport'])->name('cost-report');
+    Route::get('/export/cost/report', [ReportController::class, 'ExportCostReport'])->name('export-cost');
+    Route::get('/report/sale/report', [ReportController::class, 'SaleReport'])->name('sale-report');
+    Route::get('/export/sale/report', [ReportController::class, 'ExportSaleReport'])->name('export-sale');
 
 });
 

@@ -200,5 +200,22 @@ class GoatProfilesController extends Controller
 
     }
 
-     
+     public function GoatProfileSearch(Request $request){
+        
+        $goat_profile = GoatProfile::findOrFail($request->search);
+
+        return view('infarmer.goat_profile.search');
+    }
+
+
+    public function GoatProfileSearchResults(Request $request){
+    $searchTerm = $request->search;
+
+    // Perform a partial match search on goat_id
+    $goat_profile = GoatProfile::where('goat_id', 'LIKE', "%$searchTerm%")->get();
+
+    return view('infarmer.goat_profile.search', compact('goat_profile', 'searchTerm'));
+
+    
+}
 }

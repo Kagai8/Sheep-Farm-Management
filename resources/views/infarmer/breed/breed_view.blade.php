@@ -47,9 +47,9 @@
 
 
 											<td width="30%">
-												 <a href="{{ route('breed.edit',$item->id) }}" class="btn btn-primary" title="Edit User Details"><i class="fa fa-edit"></i> </a>
+												 <a href="{{ route('breed.edit',$item->id) }}" class="btn btn-primary" title="Edit Breed Details"><i class="fa fa-edit"></i> </a>
 
-												 <a href="{{ route('breed.delete',$item->id) }}" class="btn btn-danger" title="Delete User" >
+												 <a href="{{ route('breed.delete',$item->id) }}" class="btn btn-danger" title="Delete Breed" >
 												 	<i class="fa fa-trash"></i></a>
 											</td>
 																 

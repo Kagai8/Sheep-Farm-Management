@@ -44,8 +44,8 @@
 							 @foreach($vaccinations as $item)
 							 <tr>
 								<td> {{ $item->disease->disease }}  </td>
-								<td>{{ $item->goat->name }}</td>
-								 <td>{{ $item->goat->id }}</td>
+								<td>{{ $item->goat->name ?? 'No Name Available' }}</td>
+								 <td>{{ $item->goat->id ?? 'No ID Available' }}</td>
 								 
 								 @if($item->status)
 								 <td><span class="badge badge-pill badge-warning">Pending</span></td>

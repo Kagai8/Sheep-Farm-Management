@@ -35,6 +35,7 @@
 								<th>Goat Name </th>
 								<th>Tag No </th>
 								<th>Amount </th>
+								<th>Date </th>
 								<th>Action</th>
 								 
 							</tr>
@@ -45,13 +46,14 @@
 							 	<td> {{ $item->id }}  </td>
 								<td> {{ $item->goat->name }}  </td>
 								<td>{{ $item->goat->id }}</td>
+								<td>{{ $item->amount }}</td>
 								 <td width="20%">{{ $item->date }}</td>
 								<td >
 									 <a href="{{ route('cost.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
 
 									 <a href="{{ route('cost.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" >
 									 	<i class="fa fa-trash"></i></a>
-									 <a href="{{ route('cost.details',$item->id) }}" class="btn btn-primary" title="Vaccination Schedule Details Data"><i class="fa fa-eye"></i> </a>
+									 <a href="{{ route('cost.details',$item->id) }}" class="btn btn-primary" title="View Details Data"><i class="fa fa-eye"></i> </a>
 									 
 								</td>
 													 

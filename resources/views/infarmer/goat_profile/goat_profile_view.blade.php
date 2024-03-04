@@ -10,7 +10,44 @@
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		 
+<section class="content">
+			  	<div class="row">
+					<div class="box">
+						<div class="box-header">
+							<p>Search Goat Profile By Tag No</p>
 
+						</div>
+						<div class="box-body">
+        <form method="post" action="{{ route('search-results') }}" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <h5>Search: <span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <input type="text" name="search" class="form-control" required="">
+                            @error('search')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="hidden-xs">&nbsp;</label> <!-- Empty label for spacing -->
+                        <div class="controls">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+				<!-- /.col -->
+
+			  </div>
+			  <!-- /.row -->
+</section>
 		<!-- Main content -->
 			<section class="content">
 			  	<div class="row">
